@@ -1,13 +1,12 @@
 import { useParams } from "react-router-dom";
 import useElement from "../utils/useElement";
-import Shimmer from "./Shimmer";
 
 const ItemCard = () => {
   const { elementId } = useParams();
   const element = useElement();
 
   if (!element.length) {
-    return <Shimmer />;
+    return <h1>Loading...</h1>;
   }
 
   // Find the element with the matching ID
@@ -50,115 +49,71 @@ const ItemCard = () => {
     backgroundColor: `#${elementInfo.cpkHexColor}`,
   };
   return (
-    <div className="flex justify-center p-4 mb-4">
-      <div className="w-1/2 p-4 rounded-2xl shadow-lg m-4" style={cardStyle}>
-        <h2 className="p-2 font-bold m-2 text-center text-xl">
+    <div style={cardStyle} class="flex flex-col">
+      <div class="flex m-auto pt-2">
+        <div className="font-bold text-2xl">
           {name} ({symbol}){" "}
-        </h2>
-        <p className="p-2 m-2">
-          {" "}
-          <span className="font-semibold text-lg">History:</span> {history}
-        </p>
-        <p className="text-xl p-2 m-2">
-          <span className="font-semibold">Facts:</span>{" "}
-          {facts ? (
-            <p>{facts}</p>
-          ) : (
-            <p className="text-sm">Why don't you add some facts of your own?</p>
-          )}
-        </p>
-        <p className="p-2 m-2">
-          {" "}
-          <span className="font-semibold">Atomic Number: </span> {atomicNumber}{" "}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">AtomicMass: </span> {atomicMass}{" "}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">AtomicRadius: </span> {atomicRadius}{" "}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">BoilingPoint: </span> {boilingPoint}{" "}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Bonding Type: </span> {bondingType}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Block: </span> {block}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Crystal Structure: </span>{" "}
-          {crystalStructure}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Density: </span>
-          {density}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Electron Affinity: </span>{" "}
-          {electronAffinity}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Electro Negativity: </span>{" "}
-          {electronegativity}{" "}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Electron Configuration: </span>{" "}
-          {electronicConfiguration}{" "}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Group: </span>
-          {group}{" "}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Group Block: </span> {groupBlock}{" "}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Ionization Energy: </span>{" "}
-          {ionizationEnergy}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Ion Radius: </span> {ionRadius}{" "}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Magnetic Ordering: </span>{" "}
-          {magneticOrdering}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Melting Point: </span> {meltingPoint}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Molar Heat Capacity: </span>{" "}
-          {molarHeatCapacity}
-        </p>
-        <p className="p-2 m-2">
-          {" "}
-          <span className="font-semibold">OxidationStates: </span>{" "}
-          {oxidationStates}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">period: </span> {period}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">VanDelWaalsRadius: </span>{" "}
-          {vanDelWaalsRadius}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Speed Of Sound: </span> {speedOfSound}{" "}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Standard State: </span>{" "}
-          {standardState}{" "}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Year Discovered: </span>{" "}
-          {yearDiscovered}{" "}
-        </p>
-        <p className="p-2 m-2">
-          <span className="font-semibold">Isotopes: </span>
-          {isotopes}{" "}
-        </p>
+        </div>
       </div>
+      <div>
+        <div className="font-semibold text-center text-md p-6">{history} </div>
+      </div>
+      <div class="flex gap-4 m-auto">
+        <div className="p-4">
+          <p><span className="font-semibold">Atomic Number :</span>{atomicNumber}</p>
+          <p><span className="font-semibold">Atomic Mass :</span> {atomicMass}</p>
+          <p><span className="font-semibold">Atomic Radius : </span>{atomicRadius}</p>
+        </div>
+        <div className="p-4">
+          <p><span className="font-semibold">Boiling Point: </span>{boilingPoint}</p>
+          <p><span className="font-semibold">Block: </span> {block}</p>
+          <p> <span className="font-semibold">Bonding Type: </span> {bondingType} </p>
+            </div>
+        <div className="p-4">
+          <p><span className="font-semibold" >Density: </span> {density} </p>
+          <p><span className="font-semibold" >Electron Affinity: </span> {electronAffinity} </p>
+          <p><span className="font-semibold" >Electro Negativity: </span> {electronegativity} </p>
+        </div>
+        <div className="p-4">
+          <p><span className="font-semibold" >Electronic Configuration: </span> {electronicConfiguration} </p>
+          <p><span className="font-semibold" >Group: </span> {group} </p>
+          <p><span className="font-semibold" >Group Block: </span> {groupBlock} </p>
+        </div>
+      </div>
+      <div class="flex gap-4 m-auto">
+      <div className="p-4">
+          <p><span className="font-semibold" >Ion Radius: </span> {ionRadius} </p>
+          <p><span className="font-semibold" >Ionization Energy: </span> {ionizationEnergy} </p>
+          <p><span className="font-semibold" >Oxidation States: </span> {oxidationStates} </p>
+        </div>
+        <div className="p-4">
+          <p><span className="font-semibold" >Melting Point: </span> {meltingPoint} </p>
+          <p><span className="font-semibold" >Magnetic Ordering: </span> {magneticOrdering} </p>
+          <p><span className="font-semibold" >Molar Heat Capacity: </span> {molarHeatCapacity} </p>
+        </div>
+        <div className="p-4">
+          <p><span className="font-semibold" >Period: </span> {period} </p>
+          <p><span className="font-semibold" >VanDelWaals Radius: </span> {vanDelWaalsRadius} </p>
+          <p><span className="font-semibold" >Year Discovered: </span> {yearDiscovered} </p>
+        </div>
+      </div>
+      <div className="flex gap-4 m-auto">
+      <div className="p-4">
+          <p><span className="font-semibold" >Speed Of Sound: </span> {speedOfSound} </p>
+          <p><span className="font-semibold" >Standard State: </span> {standardState} </p>
+          <p><span className="font-semibold">Crystal Structure: </span>{crystalStructure}</p>
+       </div>
+      </div>
+      <div className="flex gap-4 p-6 m-auto">
+      <p><span className="font-semibold">Isotopes: </span>{isotopes.split(",")}</p>
+ 
+      </div>
+      
+      <div className="text-center text-md  p-6 gap-4 m-auto">
+      <p><span className="font-semibold ">Facts: </span>{facts? facts : <h2>Add some facts of your own...</h2>} </p>
+      
+      </div>
+      
     </div>
   );
 };
