@@ -19,6 +19,7 @@ const useElement = () => {
         throw new Error(response.message);
       }
       const data = await response.json();
+      console.log(data);
       setElementsList(data);
     } catch (error) {
       console.error(error);
